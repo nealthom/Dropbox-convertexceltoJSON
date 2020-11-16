@@ -14,20 +14,24 @@ const StyledDropBox = styled.div`
   }
 `;
 
-function MyDropzone() {
-  const onDrop = useCallback((acceptedFiles) => {
-    acceptedFiles.forEach((file) => {
-      ExcelRenderer(file, (err, resp) => {
-        if (err) {
-          console.log(err);
-        } else {
-          //console.log(resp.rows);
-          const converted = convert(resp.rows);
-          console.log(converted);
-        }
+function MyDropzone({ set }) {
+  const onDrop = useCallback(
+    (acceptedFiles) => {
+      acceptedFiles.forEach((file) => {
+        ExcelRenderer(file, (err, resp) => {
+          if (err) {
+            console.log(err);
+          } else {
+            //console.log(resp.rows);
+            const converted = convert(resp.rows);
+            console.log(converted);
+            set(converted);
+          }
+        });
       });
-    });
-  }, []);
+    },
+    [set]
+  );
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   return (

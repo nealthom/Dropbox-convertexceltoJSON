@@ -12,7 +12,7 @@ export default function App() {
     <div className="App">
       <h1>Spreadsheet</h1>
       <MyDropzone set={setData} data={data} />
-      {data ? JSON.stringify(data.rows) : ""}
+      {data ? JSON.stringify(data) : ""}
     </div>
   );
 }

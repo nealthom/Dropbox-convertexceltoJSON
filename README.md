@@ -1,2 +1,3 @@
 # Dropbox-convertexceltoJSON
-Created with CodeSandbox
+
+To use the first row is the keys
